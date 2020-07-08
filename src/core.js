@@ -58,7 +58,7 @@ function callPenthouse(document, options) {
   const {dimensions, width, height, userAgent, user, pass, penthouse: params = {}} = options;
   const {customPageHeaders = {}} = params;
   const {css: cssString, url} = document;
-  const config = {...params, cssString, url};
+  const config = {cssString, url};
   // Dimensions need to be sorted from small to wide. Otherwise the order gets corrupted
   const sizes = Array.isArray(dimensions)
     ? dimensions.slice().sort((a, b) => (a.width || 0) - (b.width || 0))
@@ -73,7 +73,7 @@ function callPenthouse(document, options) {
   }
 
   return sizes.map(({width, height}) => () => {
-    const result = penthouse({...config, width, height});
+    const result = penthouse({...config, width, height, ...params});
     debug('Call penthouse with:', {...config, width, height});
 
     return result;
