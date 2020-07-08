@@ -42,10 +42,6 @@ const schema = Joi.object()
     request: Joi.object().unknown(true),
     penthouse: Joi.object()
       .keys({
-        url: Joi.any().forbidden(),
-        css: Joi.any().forbidden(),
-        width: Joi.any().forbidden(),
-        height: Joi.any().forbidden(),
         timeout: Joi.number().default(DEFAULT.timeout),
         forceInclude: Joi.any(),
         maxEmbeddedBase64Length: Joi.number(),
