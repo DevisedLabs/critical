@@ -8,6 +8,7 @@ const invokeMap = require('lodash/invokeMap');
 const pAll = require('p-all');
 const debug = require('debug')('critical:core');
 const postcss = require('postcss');
+const safeParser = require('postcss-safe-parser');
 const discard = require('postcss-discard');
 const prettier = require('prettier');
 const imageInliner = require('postcss-image-inliner');
@@ -168,7 +169,7 @@ async function create(options = {}) {
   // Post-process critical css
   if (postProcess.length > 0) {
     criticalCSS = await postcss(postProcess)
-      .process(criticalCSS, {from: undefined})
+      .process(criticalCSS, {from: undefined, parser: safeParser})
       .then((contents) => contents.css);
   }
 

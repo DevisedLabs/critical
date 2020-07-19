@@ -10,6 +10,7 @@ const makeDir = require('make-dir');
 const globby = require('globby');
 const isGlob = require('is-glob');
 const postcss = require('postcss');
+const safeParser = require('postcss-safe-parser');
 const postcssUrl = require('postcss-url');
 const Vinyl = require('vinyl');
 const oust = require('oust');
@@ -281,11 +282,11 @@ function rebaseAssets(css, from, to, method = 'rebase') {
 
     rebased = postcss()
       .use(postcssUrl({url: transform}))
-      .process(css, {from, to}).css;
+      .process(css, {from, to, parser: safeParser}).css;
   } else if (from && to) {
     rebased = postcss()
       .use(postcssUrl({url: method}))
-      .process(css, {from, to}).css;
+      .process(css, {from, to, parser: safeParser}).css;
   }
 
   return Buffer.from(rebased);
