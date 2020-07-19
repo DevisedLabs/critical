@@ -6,6 +6,13 @@ Critical extracts & inlines critical-path (above-the-fold) CSS from HTML
 
 <img src="https://raw.githubusercontent.com/addyosmani/critical/master/preview.png" alt="Preview" width="378">
 
+## This is a fork
+
+This fork modifies this library with the following changes:
+
+1. Allow Penthouse options to be fully overridden.
+2. Use of a fault-tolerant PostCSS parser.
+
 ## Install
 
 ```sh
