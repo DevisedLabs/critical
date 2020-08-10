@@ -145,7 +145,7 @@ async function fileExists(href, options = {}) {
   }
 
   if (isRemote(href)) {
-    const {request = {}} = options;
+    const request = {...options.request};
     request.method = request.method || 'head';
     try {
       const response = await fetch(href, {...options, request});

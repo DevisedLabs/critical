@@ -12,6 +12,7 @@ This fork modifies this library with the following changes:
 
 1. Allow Penthouse options to be fully overridden.
 2. Use of a fault-tolerant PostCSS parser.
+3. Fixed bug where providing a `request` config caused requests to fail
 
 ## Install
 
